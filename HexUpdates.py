@@ -1,6 +1,5 @@
 #If you want to send me a tip (eth/hex address): 0xaD3d60A126Ae102cFf8eed570a888Fe4Ba486D99
 
-
 from coinpaprika import client as Coinpaprika
 import time
 from datetime import datetime
@@ -18,15 +17,18 @@ time.sleep(1)
 print("---")
 
 while True:
-    a = client.today("hex-hex")
+    price = client.ticker("hex-hex")
+    value = list((list(price.values())[9]).values())[0]["price"]
     now = datetime.now()
+    rank = client.coin("hex-hex")
     current_time = now.strftime("%H:%M:%S")
-    print ('Hex current price is: $', a[0]['open'],)
-    if a[0]['open'] > 1:
+    print ('Hex current price is: $', value)
+    print ('Rank:', rank['rank'])
+    if value > 1:
         break
     else:
         time.sleep(0.5)
-        print(("Your Hex is valued at: $"),int(balance*a[0]['open']))
+        print(("Your Hex is valued at: $"),int(balance*value))
         time.sleep(1)
         print("Current Time =", current_time)
         time.sleep(1)
