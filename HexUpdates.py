@@ -6,8 +6,6 @@ import time
 from datetime import datetime
 
 client = Coinpaprika.Client()
-now = datetime.now()
-current_time = now.strftime("%H:%M:%S")
 
 a = client.today("hex-hex")
 print("Hex Price Updater, to cancel press CTRL + C")
@@ -21,6 +19,8 @@ time.sleep(1)
 print("---")
 
 while True:
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
     print ('Hex current price is: $', a[0]['open'],)
     if a[0]['open'] > 1:
         break
